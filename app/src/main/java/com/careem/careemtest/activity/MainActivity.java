@@ -13,7 +13,7 @@ import com.careem.careemtest.adapter.ClickListener;
 import com.careem.careemtest.adapter.MovieAdapter;
 import com.careem.retrofitexample.R;
 import com.careem.careemtest.adapter.RecyclerTouchListener;
-import com.careem.careemtest.app.PracticeApplication;
+import com.careem.careemtest.app.CareemApplication;
 import com.careem.careemtest.model.Movie;
 import com.careem.careemtest.model.MoviesResponse;
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Initializing dagger
-        ((PracticeApplication)getApplication()).getAppComponent().inject(MainActivity.this);
+        ((CareemApplication)getApplication()).getAppComponent().inject(MainActivity.this);
 
         // setting presenter view
         presenter.setView(this);

@@ -11,7 +11,7 @@ import com.careem.careemtest.dagger.DaggerAppComponent;
  * Created by hp on 12/15/2017.
  */
 
-public class PracticeApplication  extends Application{
+public class CareemApplication extends Application{
     private AppComponent appComponent;
 
     public AppComponent getAppComponent()
@@ -24,7 +24,7 @@ public class PracticeApplication  extends Application{
         super.onCreate();
         appComponent = initDagger(this);
     }
-    public AppComponent initDagger(PracticeApplication application) {
+    public AppComponent initDagger(CareemApplication application) {
         return DaggerAppComponent.builder()
                 .appModule(new AppModule(application))
                 .build();

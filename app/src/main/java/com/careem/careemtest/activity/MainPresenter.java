@@ -7,7 +7,7 @@ import android.widget.DatePicker;
 
 import com.careem.careemtest.model.MoviesResponse;
 import com.careem.careemtest.app.Constants;
-import com.careem.careemtest.app.PracticeApplication;
+import com.careem.careemtest.app.CareemApplication;
 import com.careem.careemtest.model.Movie;
 import com.careem.careemtest.network.MoviesApiClient;
 
@@ -35,7 +35,7 @@ public class MainPresenter implements MainContract.MainPresenterBehavior {
 
     public MainPresenter(Context context)
     {
-        ((PracticeApplication)context).getAppComponent().inject(this);
+        ((CareemApplication)context).getAppComponent().inject(this);
     }
 
 
