@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+    <variable
+        name="movie"
+        type="com.careem.careemtest.model.Movie"/>
+</data>
+    <LinearLayout
+        style="@style/MatchMatch"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/WrapWrap"
+            android:text="@{movie.title}" />
+
+        <TextView
+            style="@style/WrapWrap"
+            android:id="@+id/tvOverView"
+            android:text="@{movie.overview}" />
+
+    </LinearLayout>
+</layout>

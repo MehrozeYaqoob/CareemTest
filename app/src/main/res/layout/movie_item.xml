@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.careem.careemtest.model.Movie" />
+    </data>
+
+    <LinearLayout
+        style="@style/MatchWrap"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/MatchMatch"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCategory"
+                style="@style/WrapWrap"
+                android:layout_weight="1"
+                android:text="@{movie.title}" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                style="@style/WrapWrap"
+                android:layout_weight="1"
+                android:text="@{movie.voteCount}"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchMatch"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/MatchWrap"
+                android:gravity="center"
+                android:text="@{movie.overview}" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
