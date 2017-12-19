@@ -15,6 +15,7 @@ import com.careem.retrofitexample.databinding.MovieDetailViewBinding;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
+    public static final String KEY_MOVIE = "movie";
 
 
     @Override
@@ -22,7 +23,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         MovieDetailViewBinding binding = DataBindingUtil.setContentView(this,R.layout.movie_detail_view);
-        binding.setMovie((Movie) getIntent().getSerializableExtra("movie"));
+        binding.setMovie((Movie) getIntent().getSerializableExtra(KEY_MOVIE));
 
 
     }
