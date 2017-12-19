@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.careem.careemtest.app.CareemApplication;
 import com.careem.careemtest.model.MoviesResponse;
 import com.careem.careemtest.app.Constants;
 import com.careem.careemtest.model.Movie;
@@ -25,21 +26,20 @@ import retrofit2.Response;
 
 public class MainPresenter implements MainContract.MainPresenterBehavior {
 
-    private final MoviesApiClient moviesApiClient;
+    @Inject
+    MoviesApiClient moviesApiClient;
 
-    private int mYear, mMonth, mDay;
-
+    private int year, month, day;
     private MoviesResponse movieResponse;
     private MainContract.MainViewBehavior mainViewBehavior;
 
-    @Inject
-    public MainPresenter(Context context, MoviesApiClient moviesApiClient) {
-        this.moviesApiClient = moviesApiClient;
+    public MainPresenter(Context context) {
+        ((CareemApplication)context).getAppComponent().inject(this);
+
     }
 
-
     @Override
-    public void setView(MainContract.MainViewBehavior view) {
+    public void attachView(MainContract.MainViewBehavior view) {
         this.mainViewBehavior = view;
     }
 
@@ -48,16 +48,16 @@ public class MainPresenter implements MainContract.MainPresenterBehavior {
 
         // Get Current Date
         final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 mainViewBehavior.updateScreen(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
             }
-        }, mYear, mMonth, mDay);
+        }, year, month, day);
 
         datePickerDialog.show();
     }
@@ -74,7 +74,7 @@ public class MainPresenter implements MainContract.MainPresenterBehavior {
 
             @Override
             public void onFailure(Call<MoviesResponse> call, Throwable t) {
-                mainViewBehavior.showErrorMessage(call,t);
+                mainViewBehavior.showErrorMessage();
             }
         });
     }
@@ -91,7 +91,7 @@ public class MainPresenter implements MainContract.MainPresenterBehavior {
 
             @Override
             public void onFailure(Call<MoviesResponse> call, Throwable t) {
-                mainViewBehavior.showErrorMessage(call,t);
+                mainViewBehavior.showErrorMessage();
             }
         });
     }
