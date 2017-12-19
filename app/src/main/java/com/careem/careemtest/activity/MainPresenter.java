@@ -7,7 +7,6 @@ import android.widget.DatePicker;
 
 import com.careem.careemtest.model.MoviesResponse;
 import com.careem.careemtest.app.Constants;
-import com.careem.careemtest.app.CareemApplication;
 import com.careem.careemtest.model.Movie;
 import com.careem.careemtest.network.MoviesApiClient;
 
@@ -26,16 +25,16 @@ import retrofit2.Response;
 
 public class MainPresenter implements MainContract.MainPresenterBehavior {
 
-    @Inject
-    MoviesApiClient moviesApiClient;
+    private final MoviesApiClient moviesApiClient;
+
     private int mYear, mMonth, mDay;
 
     private MoviesResponse movieResponse;
     private MainContract.MainViewBehavior mainViewBehavior;
 
-    public MainPresenter(Context context)
-    {
-        ((CareemApplication)context).getAppComponent().inject(this);
+    @Inject
+    public MainPresenter(Context context, MoviesApiClient moviesApiClient) {
+        this.moviesApiClient = moviesApiClient;
     }
 
 
