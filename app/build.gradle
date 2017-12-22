@@ -4,7 +4,7 @@ def daggerVer = 2.11
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.careem.retrofitexample"
+        applicationId "com.careem.careemtest"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1

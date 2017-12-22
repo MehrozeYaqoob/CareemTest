@@ -20,8 +20,6 @@ import com.careem.careemtest.model.MoviesResponse;
 
 import javax.inject.Inject;
 
-import retrofit2.Call;
-
 public class MainActivity extends AppCompatActivity implements MainContract.MainViewBehavior {
 
     @Inject
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         ((CareemApplication)getApplication()).getAppComponent().inject(MainActivity.this);
 
         // setting presenter view
-        presenter.setView(this);
+        presenter.attachView(this);
 
         // recycler view
         recyclerView = findViewById(R.id.recycler_view);
@@ -76,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     }
 
     @Override
-    public void showErrorMessage(Call<MoviesResponse> call, Throwable t) {
+    public void showErrorMessage() {
         Toast.makeText(MainActivity.this,"Error Occurred",Toast.LENGTH_SHORT).show();
     }
 
@@ -84,8 +82,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     public void showDetailViewOfMovieItem(Movie movie) {
         // first parameter is the context, second is the class of the activity to launch
         Intent i = new Intent(MainActivity.this, MovieDetailActivity.class);
-
-        i.putExtra("movie",movie);
+        i.putExtra(MovieDetailActivity.KEY_MOVIE,movie);
         startActivity(i);
     }
 
