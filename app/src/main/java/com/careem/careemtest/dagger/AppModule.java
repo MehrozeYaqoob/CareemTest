@@ -10,12 +10,13 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by hp on 12/15/2017.
+ * Created by Mehroze on 12/15/2017.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 @Module
 public class AppModule {
-    private Application mApplication;
+    private final Application mApplication;
 
     public AppModule(Application application)
     {

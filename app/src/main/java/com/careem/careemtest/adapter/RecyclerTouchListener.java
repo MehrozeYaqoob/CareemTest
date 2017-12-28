@@ -8,16 +8,17 @@ import android.view.View;
 
 
 /**
- * Created by hp on 12/18/2017.
+ * Created by Mehroze on 12/18/2017.
  */
+@SuppressWarnings({ "DefaultFileTemplate"})
 
 
 public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
 
-    private GestureDetector gestureDetector;
-    private ClickListener clickListener;
+    private final GestureDetector gestureDetector;
+    private final ClickListener clickListener;
 
-    public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener) {
+    public RecyclerTouchListener(Context context, final ClickListener clickListener) {
         this.clickListener = clickListener;
         gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
@@ -37,7 +38,7 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
 
         View child = rv.findChildViewUnder(e.getX(), e.getY());
         if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
-            clickListener.onClick(child, rv.getChildPosition(child));
+            clickListener.onClick(child, rv.getChildAdapterPosition(child));
         }
         return false;
     }

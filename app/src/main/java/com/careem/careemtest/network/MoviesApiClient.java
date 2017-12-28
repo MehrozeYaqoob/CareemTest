@@ -8,9 +8,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
- * Created by hp on 12/15/2017.
+ * Created by Mehroze on 12/15/2017.
  */
-
+@SuppressWarnings({ "DefaultFileTemplate"})
 public interface MoviesApiClient {
 
     @GET("movie/now_playing")

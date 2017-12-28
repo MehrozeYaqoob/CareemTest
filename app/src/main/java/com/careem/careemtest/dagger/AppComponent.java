@@ -9,8 +9,9 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
- * Created by hp on 12/15/2017.
+ * Created by Mehroze on 12/15/2017.
  */
+@SuppressWarnings("ALL")
 @Singleton
 @Component (modules = {AppModule.class, NetworkModule.class, PresenterModule.class})
 public interface AppComponent {

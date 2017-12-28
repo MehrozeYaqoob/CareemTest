@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.careem.retrofitexample.MainActivity">
+    tools:context="com.careem.careemtest.activity.MainActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -17,6 +17,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="Filterby Date" />
+        android:text="@string/button_text" />
 
 </RelativeLayout>

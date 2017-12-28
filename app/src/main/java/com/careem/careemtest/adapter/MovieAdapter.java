@@ -5,21 +5,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.careem.retrofitexample.R;
-import com.careem.retrofitexample.databinding.MovieItemBinding;
+import com.careem.careemtest.R;
+import com.careem.careemtest.databinding.MovieItemBinding;
 import com.careem.careemtest.model.MoviesResponse;
 
 
 /**
- * Created by hp on 12/18/2017.
+ * Created by Mehroze on 12/18/2017.
  */
 
+@SuppressWarnings({"DefaultFileTemplate"})
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.DataBindingViewHolder> {
 
-    private MoviesResponse moviesList;
+    private final MoviesResponse moviesList;
     public  class DataBindingViewHolder extends RecyclerView.ViewHolder
     {
-        MovieItemBinding binding;
+        final MovieItemBinding binding;
 
         public DataBindingViewHolder(MovieItemBinding binding)
         {

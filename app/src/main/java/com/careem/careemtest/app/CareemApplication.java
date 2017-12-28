@@ -8,9 +8,10 @@ import com.careem.careemtest.dagger.DaggerAppComponent;
 
 
 /**
- * Created by hp on 12/15/2017.
+ * Created by Mehroze on 12/15/2017.
  */
 
+@SuppressWarnings("ALL")
 public class CareemApplication extends Application{
     private AppComponent appComponent;
 
@@ -24,7 +25,7 @@ public class CareemApplication extends Application{
         super.onCreate();
         appComponent = initDagger(this);
     }
-    public AppComponent initDagger(CareemApplication application) {
+    private AppComponent initDagger(CareemApplication application) {
         return DaggerAppComponent.builder()
                 .appModule(new AppModule(application))
                 .build();

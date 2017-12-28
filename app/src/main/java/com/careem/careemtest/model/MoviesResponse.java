@@ -5,8 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by hp on 12/13/2017.
+ * Created by Mehroze on 12/13/2017.
  */
+@SuppressWarnings({ "DefaultFileTemplate"})
 
 
 public class MoviesResponse {

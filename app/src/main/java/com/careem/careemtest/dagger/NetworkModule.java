@@ -25,7 +25,7 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    Converter.Factory provideGsonConverter() {
+    Converter.Factory provideGSONConverter() {
         return GsonConverterFactory.create();
     }
 

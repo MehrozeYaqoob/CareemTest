@@ -2,7 +2,7 @@ package com.careem.careemtest.activity;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.view.View;
+import android.support.annotation.NonNull;
 import android.widget.DatePicker;
 
 import com.careem.careemtest.app.CareemApplication;
@@ -21,15 +21,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by hp on 12/15/2017.
+ * Created by Mehroze on 12/15/2017.
  */
 
+@SuppressWarnings("ALL")
 public class MainPresenter implements MainContract.MainPresenterBehavior {
 
     @Inject
     MoviesApiClient moviesApiClient;
 
-    private int year, month, day;
     private MoviesResponse movieResponse;
     private MainContract.MainViewBehavior mainViewBehavior;
 
@@ -48,9 +48,9 @@ public class MainPresenter implements MainContract.MainPresenterBehavior {
 
         // Get Current Date
         final Calendar c = Calendar.getInstance();
-        year = c.get(Calendar.YEAR);
-        month = c.get(Calendar.MONTH);
-        day = c.get(Calendar.DAY_OF_MONTH);
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -67,13 +67,13 @@ public class MainPresenter implements MainContract.MainPresenterBehavior {
         Call<MoviesResponse> call = moviesApiClient.getDateWiseFilteredMovies(Constants.API_KEY,date);
         call.enqueue(new Callback<MoviesResponse>() {
             @Override
-            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
+            public void onResponse(@NonNull Call<MoviesResponse> call, @NonNull Response<MoviesResponse> response) {
                 movieResponse = response.body();
                 mainViewBehavior.setAdapter(response.body());
             }
 
             @Override
-            public void onFailure(Call<MoviesResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<MoviesResponse> call, @NonNull Throwable t) {
                 mainViewBehavior.showErrorMessage();
             }
         });
@@ -84,20 +84,20 @@ public class MainPresenter implements MainContract.MainPresenterBehavior {
         Call<MoviesResponse> call = moviesApiClient.getNowPlayingMovies(Constants.API_KEY);
         call.enqueue(new Callback<MoviesResponse>() {
             @Override
-            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
+            public void onResponse(@NonNull Call<MoviesResponse> call, @NonNull Response<MoviesResponse> response) {
                 movieResponse = response.body();
                 mainViewBehavior.setAdapter(response.body());
             }
 
             @Override
-            public void onFailure(Call<MoviesResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<MoviesResponse> call, @NonNull Throwable t) {
                 mainViewBehavior.showErrorMessage();
             }
         });
     }
 
     @Override
-    public void handleItemTouchEvent(View v, int position) {
+    public void handleItemTouchEvent(int position) {
         Movie movie = movieResponse.getResults().get(position);
         mainViewBehavior.showDetailViewOfMovieItem(movie);
     }

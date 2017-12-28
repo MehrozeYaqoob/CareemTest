@@ -10,10 +10,12 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by hp on 12/18/2017.
+ * Created by Mehroze on 12/18/2017.
  */
+@SuppressWarnings({ "DefaultFileTemplate"})
+
 @Module
-public class PresenterModule {
+class PresenterModule {
 
 
     @Provides @Singleton

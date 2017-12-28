@@ -1,8 +1,8 @@
 package com.careem.careemtest.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,12 +11,11 @@ import android.widget.Toast;
 
 import com.careem.careemtest.adapter.ClickListener;
 import com.careem.careemtest.adapter.MovieAdapter;
-import com.careem.retrofitexample.R;
 import com.careem.careemtest.adapter.RecyclerTouchListener;
 import com.careem.careemtest.app.CareemApplication;
 import com.careem.careemtest.model.Movie;
 import com.careem.careemtest.model.MoviesResponse;
-
+import com.careem.careemtest.R;
 
 import javax.inject.Inject;
 
@@ -47,10 +46,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         // Using our Presenter Rendering logic
         presenter.fetchMoviesDataAsync();
 
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(MainActivity.this, recyclerView, new ClickListener() {
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(MainActivity.this, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                presenter.handleItemTouchEvent(view,position);
+                presenter.handleItemTouchEvent(position);
             }
         }));
 
